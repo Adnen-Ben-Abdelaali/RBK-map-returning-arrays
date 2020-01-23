@@ -151,15 +151,16 @@ function identifyWords(words) {
       spaceIndexes.push(i);
     }
   }
+
   let stoppingIndex = -1;
-  each(spaceIndexes, function(element, index) {
+  arrayOfWords = map(spaceIndexes, function(element, index) {
     let word = "";
     for(let i = stoppingIndex + 1; i < element; i++) {
       word += words[i];
     }
     stoppingIndex = element;
     if ( (word != " ") && (word != "") ) {
-      arrayOfWords.push(word);
+      return word;
     }
   });
   /* Getting the last word of "words" */
