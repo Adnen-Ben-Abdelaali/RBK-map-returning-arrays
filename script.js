@@ -246,5 +246,19 @@ Let's say that we have a string representing a CSV
   a CSV string as a parameter and outputs an array of people
    objects with the exact format as shown above.
 */
-
+function parseCSV(csvString, splittingCaracter) {
+  let splittedCsvString = csvString.split(splittingCaracter);
+  return map(splittedCsvString, function(element, index) {
+    let splittedElement = element.split(',');
+    console.log("splittedElement = " + splittedElement)
+    let object = new Object();
+    
+    object["name"] = new Object();
+    object["name"]["first"] = splittedElement[0];
+    object["name"]["middle"] = splittedElement[1];
+    object["name"]["last"] = splittedElement[2];
+    object["age"] = splittedElement[3];
+    return object;
+  });
+}
 
