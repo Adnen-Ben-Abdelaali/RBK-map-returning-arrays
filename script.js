@@ -188,3 +188,63 @@ function reverse(words) {
   reversedString += reverseOneWord(tableOfWords[tableOfWords.length - 1]);
   return reversedString;
 }
+/******************************************************************/
+/*
+3.We often want to transform an array of objects by looking up
+ the value found under a specific key in each object; for instance,
+  consider the problem of finding the ages of all the people in 
+  the people array like we did in the first exercise:
+
+ var people = [ 
+  {name: {first: 'Alyssa', middle: 'P.', last: 'Hacker'}, age: 26}, 
+  {name: {first: 'Louis', last: 'Reasoner'}, age: 21}, 
+  {name: {first: 'Ben', last: 'Bitdiddle'}, age: 34}, 
+  {name: {first: 'Eva', middle: 'Lu', last: 'Ator'}, age: 40}, 
+  {name: {first: 'Lem', middle: 'E.', last: 'Tweakit'}, age: 45} 
+ ]; 
+ function ages(people) { 
+       return map(people, function(person) { 
+             return person.age; 
+       }); 
+ } 
+
+ ***  Write a function called pluck that takes an array of objects
+  and a string representing a key as parameters, 
+
+ and returns an array of all the values found under each object
+  using the key, e.g.: 
+
+ pluck(people, 'age'); // => [26, 21, 34, 40, 45] 
+
+ Your implementation should use map. 
+
+ */
+function pluck(arrayOfObjects, str) {
+  return map(arrayOfObjects, function(element, index) {
+    if( (typeof element === "object") && (!Array.isArray(element)) ) {
+      let outputValue = 0;
+     each(element, function(elem, indx) {
+        console.log(typeof(indx.toString()));
+        if(indx.toString() == str) {
+          outputValue =  elem;
+        }
+      });
+      return outputValue;
+    }
+});
+} 
+/************************************/
+/*
+Let's say that we have a string representing a CSV 
+(comma-separated values) file that looks like this: 
+'Grace,B.,Hopper,85/nAdele,Goldstine,43/nAda,Lovelace,36/nHedy,E.,Lamarr,85/nRuchi,Sanghvi,34/n' 
+
+ And we want to parse it into an array people objects like the one
+  above. 
+
+ Using map and split, write a function parseCSV that accepts
+  a CSV string as a parameter and outputs an array of people
+   objects with the exact format as shown above.
+*/
+
+
